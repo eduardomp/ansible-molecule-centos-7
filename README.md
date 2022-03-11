@@ -29,7 +29,10 @@ First of all, you need to install:
 
 - Python3
 - Ansible : pip3 install ansible
-- Molecule with docker as driver: python3 -m pip install --user "molecule[docker]"
+- Molecule with docker as driver: pip3 install --user "molecule[docker]"
+- Testinfra library: pip3 install testinfra
+
+Then, you can run molecule with the role:
 
 To create another role like this, do the following:
 
@@ -43,6 +46,6 @@ To execute tests, do the following:
 
 ```shell
 
-$ molecule test
+$  molecule test -s default
 
 ```
