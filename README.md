@@ -32,20 +32,18 @@ First of all, you need to install:
 - Molecule with docker as driver: pip3 install --user "molecule[docker]"
 - Testinfra library: pip3 install testinfra
 
-Then, you can run molecule with the role:
+To execute tests, do the following:
+
+```shell
+
+$  molecule test -s default
+
+```
 
 To create another role like this, do the following:
 
 ```shell
 
 $ molecule create role namespace.name-of-your-role -d docker
-
-```
-
-To execute tests, do the following:
-
-```shell
-
-$  molecule test -s default
 
 ```
