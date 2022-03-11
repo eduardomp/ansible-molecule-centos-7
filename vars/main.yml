@@ -1,0 +1,5 @@
+---
+# vars file for nginx
+nginx_port: 80
+domain: localhost
+app_port: 8080

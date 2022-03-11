@@ -1,0 +1,13 @@
+---
+# tasks file for nginx
+- name: Install nginx
+  apt: name=nginx state=latest update_cache=yes
+
+- name: Copy nginx configuration
+  template:
+    src: default.conf
+    dest: /etc/nginx/conf.d/default.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart nginx
