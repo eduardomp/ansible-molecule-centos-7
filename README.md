@@ -4,7 +4,7 @@ Intall and configure NGINX as a reverse proxy
 
 ## Requirements
 
-A debian/ubuntu server, with python3 installed, a valid user and password for the root
+A centos7 server, with python3 installed, a valid user and password for the root
 
 ## Role Variables
 
