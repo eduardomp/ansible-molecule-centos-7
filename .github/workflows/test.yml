@@ -1,0 +1,33 @@
+name: Start
+
+on:
+  # To run this workflow when a push occurs to the main branch (pipeline.properties file will be read as input)
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+          architecture: "x64"
+
+      - name: Install libraries
+        run: |
+          pip install --upgrade pip
+          pip install ansible
+          pip install testinfra
+          pip install --user "molecule[docker]"
+          pip install --user libvirt-python
+          pip install --user python-vagrant
+          pip install --user molecule-vagrant
+          pip install --user rich
+
+      - name: Execute molecule tests
+        run: |
+          molecule test -s default
