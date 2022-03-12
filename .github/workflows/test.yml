@@ -17,6 +17,11 @@ jobs:
           python-version: "3.9"
           architecture: "x64"
 
+      - name: Install kvm
+        run : |
+        sudo apt update
+        sudo apt install qemu-kvm libvirt-daemon-system
+
       - name: Install libraries
         run: |
           pip install --upgrade pip
