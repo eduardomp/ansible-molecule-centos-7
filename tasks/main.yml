@@ -1,7 +1,12 @@
 ---
+- name: install EPEL repo
+  yum: name=epel-release state=present
+
 # tasks file for nginx
-- name: Install nginx
-  apt: name=nginx state=latest update_cache=yes
+- name: Install the latest version of NGINX
+  yum:
+    name: nginx
+    state: latest
 
 - name: Copy nginx configuration
   template:

@@ -9,11 +9,10 @@ def test_passwd_file(host):
 def test_nginx_is_installed(host):
     nginx = host.package("nginx")
     assert nginx.is_installed
-    # latest nginx version for ubuntu 20.04
-    assert nginx.version.startswith("1.18")
+    # latest nginx version for centos7
+    assert nginx.version.startswith("1.20.1")
 
 
-def test_nginx_running_and_enabled(host):
+def test_nginx_running(host):
     nginx = host.service("nginx")
     assert nginx.is_running
-    assert nginx.is_enabled

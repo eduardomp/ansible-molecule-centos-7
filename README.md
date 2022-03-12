@@ -32,6 +32,19 @@ First of all, you need to install:
 - Molecule with docker as driver: pip3 install --user "molecule[docker]"
 - Testinfra library: pip3 install testinfra
 
+Because of limitations on docker with systemd (centos7 and 8), we need to install the following packages to run libvirt (KVM) as provider for vagrant boxes:
+
+note: mac users have to install libvirt before using ´brew install libvirt´
+
+```shell
+pip3 install --user python-vagrant
+pip3 install --user libvirt-python
+pip3 install --user molecule-vagrant
+pip3 install --user rich
+```
+
+About molecule + libvirt(vagrant): https://www.tauceti.blog/posts/testing-ansible-roles-with-molecule-libvirt-vagrant-qemu-kvm/
+
 To execute tests, do the following:
 
 ```shell

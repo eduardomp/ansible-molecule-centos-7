@@ -2,12 +2,38 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: vagrant
+  provider:
+    name: libvirt
+    type: libvirt
+    options:
+      memory: 192
+      cpus: 2
 platforms:
-  - name: instance
-    image: ubuntu:20.04
-    pre_build_image: false
+  #search boxes here https://app.vagrantup.com/boxes/search?utf8=%E2%9C%93&sort=downloads&provider=libvirt
+  - name: centos7-libvirt
+    box: centos/7
+    interfaces:
+      - auto_config: true
+        network_name: private_network
+        type: static
+        ip: 192.168.10.10
+    groups:
+      - vpn
 provisioner:
   name: ansible
+  connection_options:
+    ansible_ssh_user: vagrant
+    ansible_become: true
+  log: true
+  lint:
+    name: ansible-lint
+  inventory:
+    host_vars:
+      centos7-libvirt:
+        wireguard_address: "10.10.10.10/24"
+        wireguard_port: 51820
+        wireguard_persistent_keepalive: "30"
+        wireguard_endpoint: "192.168.10.10"
 verifier:
   name: testinfra
